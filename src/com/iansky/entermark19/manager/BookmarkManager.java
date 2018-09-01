@@ -4,6 +4,8 @@ import com.iansky.entermark19.dao.BookmarkDao;
 import com.iansky.entermark19.entities.Book;
 import com.iansky.entermark19.entities.Bookmark;
 import com.iansky.entermark19.entities.Movie;
+import com.iansky.entermark19.entities.User;
+import com.iansky.entermark19.entities.UserBookmark;
 import com.iansky.entermark19.entities.Weblink;
 
 public class BookmarkManager {
@@ -58,5 +60,13 @@ public class BookmarkManager {
 	
 	public Bookmark[][] getBookmarks(){
 		return dao.getBookmarks();
+	}
+
+	public void saveUserBookmark(User user, Bookmark bookmark) {
+		UserBookmark userBookmark = new UserBookmark();
+		userBookmark.setUser(user);
+		userBookmark.setBookmark(bookmark);
+		
+		dao.saveUserBookmark(userBookmark);
 	}
 }
