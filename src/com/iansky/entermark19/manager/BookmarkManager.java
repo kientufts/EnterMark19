@@ -1,11 +1,14 @@
 package com.iansky.entermark19.manager;
 
+import com.iansky.entermark19.dao.BookmarkDao;
 import com.iansky.entermark19.entities.Book;
+import com.iansky.entermark19.entities.Bookmark;
 import com.iansky.entermark19.entities.Movie;
 import com.iansky.entermark19.entities.Weblink;
 
 public class BookmarkManager {
 	private static BookmarkManager instance = new BookmarkManager();
+	private static BookmarkDao dao = new BookmarkDao();
 
 	private BookmarkManager() {
 	}
@@ -51,5 +54,9 @@ public class BookmarkManager {
 		weblink.setHost(host);
 		
 		return weblink;
+	}
+	
+	public Bookmark[][] getBookmarks(){
+		return dao.getBookmarks();
 	}
 }

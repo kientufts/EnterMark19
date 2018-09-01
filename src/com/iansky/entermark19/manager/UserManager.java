@@ -1,9 +1,11 @@
 package com.iansky.entermark19.manager;
 
+import com.iansky.entermark19.dao.UserDao;
 import com.iansky.entermark19.entities.User;
 
 public class UserManager {
 	private static UserManager instance = new UserManager();
+	private static UserDao dao = new UserDao();
 	private UserManager() {}
 	
 	public static UserManager getInstance() {
@@ -21,5 +23,9 @@ public class UserManager {
 		user.setUserType(userType);
 		
 		return user;
+	}
+	
+	public User[] getUsers() {
+		return dao.getUsers();
 	}
 }
