@@ -2,6 +2,8 @@ package com.iansky.entermark19.entities;
 
 import java.util.Arrays;
 
+import com.iansky.entermark19.constants.BookGenre;
+
 public class Book extends Bookmark {
 	private int publicationYear;
 	private String publisher;
@@ -53,6 +55,14 @@ public class Book extends Bookmark {
 	public String toString() {
 		return "Book [publicationYear=" + publicationYear + ", publisher=" + publisher + ", authors="
 				+ Arrays.toString(authors) + ", genre=" + genre + ", amazonRating=" + amazonRating + "]";
+	}
+
+	@Override
+	public boolean isKidFriendlyEligible() {
+		if(genre.equals(BookGenre.PHILOSOPHY) || genre.equals(BookGenre.SELF_HELP)) {
+			return false;
+		}
+		return true;
 	}
 
 }
