@@ -1,6 +1,8 @@
 package com.iansky.entermark19.entities;
 
-public class Weblink extends Bookmark {
+import com.iansky.entermark19.partner.Shareable;
+
+public class Weblink extends Bookmark implements Shareable{
 	private String url;
 	private String host;
 
@@ -31,6 +33,19 @@ public class Weblink extends Bookmark {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String getItemData() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("<item>");
+			builder.append("<type>Weblink</type>");
+			builder.append("<title>").append(getTitle()).append("</title>");
+			builder.append("<url>").append(getUrl()).append("</url>");
+			builder.append("<host>").append(getHost()).append("</host>");
+		builder.append("</item>");
+		
+		return builder.toString();
 	}
 
 }
